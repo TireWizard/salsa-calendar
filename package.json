@@ -1,0 +1,29 @@
+{
+  "name": "calendar-widget",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.0"
+  },
+  "devDependencies": {
+    "autoprefixer-core": "^5.2.1",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-postcss": "^5.1.9",
+    "gulp-rename": "^1.2.2",
+    "gulp-stylus": "^2.0.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salsita/chilli-seed.git"
+  },
+  "author": "filip@salsitasoft.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/salsita/chilli-seed/issues"
+  },
+  "homepage": "https://github.com/salsita/chilli-seed"
+}
