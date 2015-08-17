@@ -1,5 +1,5 @@
 {
-  "name": "calendar-widget",
+  "name": "salsa-calendar",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -18,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/salsita/chilli-seed.git"
+    "url": "https://github.com/salsita/salsa-calendar.git"
   },
   "author": "filip@salsitasoft.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/salsita/chilli-seed/issues"
+    "url": "https://github.com/salsita/salsa-calendar/issues"
   },
-  "homepage": "https://github.com/salsita/chilli-seed"
+  "homepage": "https://github.com/salsita/salsa-calendar"
 }
