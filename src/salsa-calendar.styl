@@ -1,9 +1,7 @@
 /*
-  calendar-widget
+  salsa-calendar
   ============================== */
 
-$controlHeight   = 40px
-$borderRadius    = 3px
 $colorGrey       = #ddd
 $colorGreyDarker = #888
 $colorCompleted  = #83c147
@@ -13,7 +11,7 @@ $colorScheduled  = #4778d1
 
 @import 'mixins'
 
-.calendar-flex
+.salsa-calendar
   display block
   clearfix()
 
@@ -22,25 +20,18 @@ $colorScheduled  = #4778d1
   .month-select
     display flex
     box-sizing border-box
-    height $controlHeight
+    height 40px
     border-bottom 1px solid $colorGrey
 
     .title
     .prev
     .next
-      line-height $controlHeight
-
-    .title
-      flex-grow 1
-      order 2
-      text-transform uppercase
-      font-weight bold
-      text-align center
+      line-height @height
 
     .prev
     .next
       display block
-      width $controlHeight
+      width @height
       height 100%
       background-image url('img/arrow487.svg')
       background-repeat no-repeat
@@ -48,6 +39,13 @@ $colorScheduled  = #4778d1
       background-size auto 12px
       cursor pointer
       hide-text()
+
+    .title
+      flex-grow 1
+      order 2
+      text-transform uppercase
+      font-weight bold
+      text-align center
 
     .prev
       order 1
@@ -81,16 +79,14 @@ $colorScheduled  = #4778d1
           line-height 26px
           text-align center
           text-decoration none
-          border-radius $borderRadius
-
+          border-radius 3px
+          color inherit
 
     .heading
       font-weight bold
 
     .month
-      a
-        color $colorGreyDarker
-
+      color $colorGreyDarker
 
       // States
 
@@ -149,6 +145,24 @@ $colorScheduled  = #4778d1
     &[data-week-starts='sunday'][data-first-day='saturday'] .month li:first-child
       margin-left calc(6*(100%/7))
 
+    // Weekend targetting
+
+    &[data-first-day='monday'] .month li:nth-child(7n + 6)
+    &[data-first-day='monday'] .month li:nth-child(7n)
+    &[data-first-day='tuesday'] .month li:nth-child(7n + 5)
+    &[data-first-day='tuesday'] .month li:nth-child(7n + 6)
+    &[data-first-day='wednesday'] .month li:nth-child(7n + 4)
+    &[data-first-day='wednesday'] .month li:nth-child(7n + 5)
+    &[data-first-day='thursday'] .month li:nth-child(7n + 3)
+    &[data-first-day='thursday'] .month li:nth-child(7n + 4)
+    &[data-first-day='friday'] .month li:nth-child(7n + 2)
+    &[data-first-day='friday'] .month li:nth-child(7n + 3)
+    &[data-first-day='saturday'] .month li:nth-child(7n + 1)
+    &[data-first-day='saturday'] .month li:nth-child(7n + 2)
+    &[data-first-day='sunday'] .month li:nth-child(7n)
+    &[data-first-day='sunday'] .month li:nth-child(7n + 1)
+      color $colorGrey
+
   // Legend
 
   .legend
@@ -195,7 +209,7 @@ $colorScheduled  = #4778d1
           margin-top (@height/-2)
           color #fff
           background-color $colorGreyDarker
-          border-radius $borderRadius
+          border-radius 3px
           text-align center
           text-decoration none
           font-size x-small

@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset='UTF-8'>
-  <title>calendar-flex</title>
+  <title>salsa-calendar</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-  <link rel='stylesheet' type='text/css' href='calendar.css'>
+  <link rel='stylesheet' type='text/css' href='salsa-calendar.css'>
   <script type='text/javascript' src='http://code.jquery.com/jquery-2.1.4.min.js'></script>
   <script type='text/javascript' src='app.js'></script>
   <style>
@@ -26,8 +26,8 @@
 </head>
 <body>
 
-<button type='button' class='change--week-starts--monday'>Month starts Monday</button>
-<button type='button' class='change--week-starts--sunday'>Month starts Sunday</button>
+<button type='button' class='change--week-starts--monday'>Week starts Monday</button>
+<button type='button' class='change--week-starts--sunday'>Week starts Sunday</button>
 <br>
 <button type='button' class='change--first-day--monday'>First day Monday</button>
 <button type='button' class='change--first-day--wednesday'>First day Wednesday</button>
@@ -35,7 +35,7 @@
 
 <div class='wrapper'>
 
-  <section class='calendar-flex'>
+  <section class='salsa-calendar'>
 
     <div class='month-select'>
       <span class='title'>July 2015</span>
@@ -43,7 +43,7 @@
       <a href='#' class='next'>Next</a>
     </div>
 
-    <div class='month-view' data-week-starts='sunday' data-first-day='wednesday'>
+    <div class='month-view' data-week-starts='sunday' data-first-day='monday'>
 
       <ol class='heading'>
         <li class='monday'>

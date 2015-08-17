@@ -6,12 +6,12 @@ var autoprefixer = require('autoprefixer-core');
 var minifyCss = require('gulp-minify-css');
 
 gulp.task('build-styles', function () {
-  gulp.src('./src/calendar.styl')
+  gulp.src('./src/salsa-calendar.styl')
     .pipe(stylus({
       compress: true,
       'include css': true
     }))
-    .pipe(rename('calendar.css'))
+    .pipe(rename('salsa-calendar.css'))
     .pipe(postcss([ autoprefixer({ browsers: ['last 2 version'] }) ]))
     .pipe(minifyCss())
     .pipe(gulp.dest('./build/'));
