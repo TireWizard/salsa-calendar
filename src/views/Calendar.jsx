@@ -59,7 +59,7 @@ export default class Calendar extends Component {
     const { appState } = this.state;
 
     return (
-      <div className="calendar-flex">
+      <div className="salsa-calendar calendar-flex">
         <MonthSelect
           date={appState.get('currentMonth')}
           onNextMonth={::this.onNextMonth}

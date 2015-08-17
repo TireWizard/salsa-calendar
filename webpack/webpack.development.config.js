@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var autoprefixer = require('autoprefixer-core');
 
 module.exports = {
   debug: true,
@@ -21,9 +22,16 @@ module.exports = {
     loaders: [{
       test: /\.jsx$|\.js$/,
       loaders: ['react-hot', 'babel?stage=0&optional[]=runtime'],
-      include: path.join(__dirname, '../src'),
+      include: path.join(__dirname, '../src')
+    },{
+      test: /\.styl$/,
+      loader: 'style!css!postcss!stylus'
+    },{
+      test: /\.svg$/,
+      loader: 'svg-loader'
     }]
   },
+  postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
   resolve: {
     extensions: ['', '.js', '.jsx']
   }
