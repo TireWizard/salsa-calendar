@@ -37,7 +37,6 @@
     "react-hot-loader": "^1.2.7",
     "style-loader": "^0.12.3",
     "stylus-loader": "^1.2.1",
-    "svg-loader": "0.0.2",
     "webpack": "^1.9.7",
     "webpack-dev-server": "^1.8.2"
   },

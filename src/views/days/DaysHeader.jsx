@@ -14,7 +14,7 @@ export default class DaysHeader extends PureView {
 
     return (
       <ol clasName="heading">
-        {daysInWeek.map((dayInWeek, index) => <li key={index}>{dayInWeek}</li>)}
+        {daysInWeek.map((dayInWeek, index) => <li key={index}><span>{dayInWeek}</span></li>)}
       </ol>
     );
   }

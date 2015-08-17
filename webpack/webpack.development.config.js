@@ -26,9 +26,6 @@ module.exports = {
     },{
       test: /\.styl$/,
       loader: 'style!css!postcss!stylus'
-    },{
-      test: /\.svg$/,
-      loader: 'svg-loader'
     }]
   },
   postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
