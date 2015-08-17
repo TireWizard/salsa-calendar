@@ -1,0 +1,217 @@
+/*
+  salsa-calendar
+  ============================== */
+
+$colorGrey       = #ddd
+$colorGreyDarker = #888
+$colorCompleted  = #83c147
+$colorIncomplete = #dea837
+$colorMissing    = #f56743
+$colorScheduled  = #4778d1
+
+@import 'mixins'
+
+.salsa-calendar
+  display block
+  clearfix()
+
+  // Month selection
+
+  .month-select
+    display flex
+    box-sizing border-box
+    height 40px
+    border-bottom 1px solid $colorGrey
+
+    .title
+    .prev
+    .next
+      line-height @height
+
+    .prev
+    .next
+      display block
+      width @height
+      height 100%
+      background-image url('img/arrow487.svg')
+      background-repeat no-repeat
+      background-position 50% 50%
+      background-size auto 12px
+      cursor pointer
+      hide-text()
+
+    .title
+      flex-grow 1
+      order 2
+      text-transform uppercase
+      font-weight bold
+      text-align center
+
+    .prev
+      order 1
+      transform rotate(180deg)
+
+    .next
+      order 2
+
+  // Calendar view
+
+  .month-view
+    padding 10px 15px
+    border-bottom 1px solid $colorGrey
+
+    ol
+      display flex
+      flex-wrap wrap
+      unstyled-list()
+
+      li
+        box-sizing border-box
+        width calc(100%/7)
+        height 28px
+        padding 1px
+        transition margin-left .2s ease-in-out
+
+        a
+        span
+          display block
+          height 100%
+          line-height 26px
+          text-align center
+          text-decoration none
+          border-radius 3px
+          color inherit
+          transition all .2s ease-in-out
+
+    .heading
+      font-weight bold
+
+    .month
+      color $colorGreyDarker
+
+      // States
+
+      .completed a
+        color $colorCompleted
+
+      .incomplete a
+        color #fff
+        background-color $colorIncomplete
+
+      .missing a
+        color #fff
+        background-color $colorMissing
+
+      .scheduled a
+        color #fff
+        background-color $colorScheduled
+
+    // Weekday ordering
+
+    &[data-week-starts='monday']
+      .monday
+        order -1
+
+    &[data-week-starts='sunday']
+      .sunday
+        order -1
+
+    // Month ordering
+
+    &[data-first-day='monday'] .month li:first-child
+    &[data-week-starts='sunday'][data-first-day='sunday'] .month li:first-child
+      margin-left 0
+
+    &[data-first-day='tuesday'] .month li:first-child
+    &[data-week-starts='sunday'][data-first-day='monday'] .month li:first-child
+      margin-left calc(100%/7)
+
+    &[data-first-day='wednesday'] .month li:first-child
+    &[data-week-starts='sunday'][data-first-day='tuesday'] .month li:first-child
+      margin-left calc(2*(100%/7))
+
+    &[data-first-day='thursday'] .month li:first-child
+    &[data-week-starts='sunday'][data-first-day='wednesday'] .month li:first-child
+      margin-left calc(3*(100%/7))
+
+    &[data-first-day='friday'] .month li:first-child
+    &[data-week-starts='sunday'][data-first-day='thursday'] .month li:first-child
+      margin-left calc(4*(100%/7))
+
+    &[data-first-day='saturday'] .month li:first-child
+    &[data-week-starts='sunday'][data-first-day='friday'] .month li:first-child
+      margin-left calc(5*(100%/7))
+
+    &[data-first-day='sunday'] .month li:first-child
+    &[data-week-starts='sunday'][data-first-day='saturday'] .month li:first-child
+      margin-left calc(6*(100%/7))
+
+    // Weekend targetting
+
+    &[data-first-day='monday'] .month li:nth-child(7n + 6)
+    &[data-first-day='monday'] .month li:nth-child(7n)
+    &[data-first-day='tuesday'] .month li:nth-child(7n + 5)
+    &[data-first-day='tuesday'] .month li:nth-child(7n + 6)
+    &[data-first-day='wednesday'] .month li:nth-child(7n + 4)
+    &[data-first-day='wednesday'] .month li:nth-child(7n + 5)
+    &[data-first-day='thursday'] .month li:nth-child(7n + 3)
+    &[data-first-day='thursday'] .month li:nth-child(7n + 4)
+    &[data-first-day='friday'] .month li:nth-child(7n + 2)
+    &[data-first-day='friday'] .month li:nth-child(7n + 3)
+    &[data-first-day='saturday'] .month li:nth-child(7n + 1)
+    &[data-first-day='saturday'] .month li:nth-child(7n + 2)
+    &[data-first-day='sunday'] .month li:nth-child(7n)
+    &[data-first-day='sunday'] .month li:nth-child(7n + 1)
+      color $colorGrey
+
+  // Legend
+
+  .legend
+    padding 10px 25px
+
+    ul
+      unstyled-list()
+
+      li
+        position relative
+        padding-left 15px
+        line-height 20px
+
+        &:before
+          pseudo()
+          position absolute
+          left 0
+          top 50%
+          width 5px
+          height 5px
+          transform translateY(-50%)
+          circle()
+
+        &.completed:before
+          background-color $colorCompleted
+
+        &.incomplete:before
+          background-color $colorIncomplete
+
+        &.missing:before
+          background-color $colorMissing
+
+        &.scheduled:before
+          background-color $colorScheduled
+
+        .notification
+          display block
+          width 16px
+          height @width
+          line-height @height
+          position absolute
+          right 0
+          top 50%
+          margin-top (@height/-2)
+          color #fff
+          background-color $colorGreyDarker
+          border-radius 3px
+          text-align center
+          text-decoration none
+          font-size x-small
+          font-weight bold
