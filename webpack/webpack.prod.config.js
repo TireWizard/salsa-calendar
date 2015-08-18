@@ -9,14 +9,22 @@ module.exports = {
     js: './src/views/Calendar.jsx',
     css: './src/styles/salsa-calendar.styl'
   },
+  externals: [{
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react'
+    }
+  }],
   plugins: [
     new webpack.optimize.UglifyJsPlugin()
   ],
   output: {
     path: path.join(__dirname, '../dist'),
     filename: pkg.name + '.min.[name]',
-    library: 'Calendar',
-    libraryTarget: 'commonjs2'
+    library: 'SalsaCalendar',
+    libraryTarget: 'umd'
   },
   module: {
     loaders: [{
