@@ -12,7 +12,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './src/main.jsx'
+    './src/client/main.jsx'
   ],
   output: {
     path: path.join(__dirname, '../dev'),
@@ -22,8 +22,8 @@ module.exports = {
     loaders: [{
       test: /\.jsx$|\.js$/,
       loaders: ['react-hot', 'babel?stage=0&optional[]=runtime'],
-      include: path.join(__dirname, '../src')
-    },{
+      exclude: /node_modules/
+    }, {
       test: /\.styl$/,
       loader: 'style!css!postcss!stylus'
     }]

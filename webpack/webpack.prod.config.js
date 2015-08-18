@@ -6,7 +6,7 @@ var pkg = require('../package.json');
 
 module.exports = {
   entry: {
-    js: './src/views/Calendar.jsx',
+    js: './src/client/views/Calendar.jsx',
     css: './src/styles/salsa-calendar.styl'
   },
   externals: [{
@@ -30,7 +30,7 @@ module.exports = {
     loaders: [{
       test: /\.jsx$|\.js$/,
       loaders: ['babel?stage=0&optional[]=runtime'],
-      include: path.join(__dirname, '../src')
+      exclude: /node_modules/
     }, {
       test: /\.styl$/,
       loader: ExtractTextPlugin.extract('style-loader', 'css?minimize!postcss!stylus')

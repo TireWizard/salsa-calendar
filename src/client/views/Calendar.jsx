@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import MomentPropType from 'react-moment-proptypes';
 import { Dispatcher } from 'flux';
-import { Map } from 'immutable';
 
+import initialAppState from '../initialAppState';
 import { dateChanged, nextMonth, prevMonth, daySelected } from '../actions/calendarActions';
 
 import globalReducer from '../reducers/globalReducer';
@@ -29,11 +29,11 @@ export default class Calendar extends Component {
 
     this.state = {
       dispatcher: dispatcher,
-      appState: new Map({})
+      appState: initialAppState
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.state.dispatcher.dispatch(dateChanged(this.props.date));
   }
 

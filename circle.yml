@@ -1,0 +1,20 @@
+machine:
+  node:
+    version: 0.12.2
+  environment:
+    PATH: ${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin
+
+checkout:
+  post:
+    - '[[ ! -e "$(git rev-parse --git-dir)/shallow" ]] || git fetch --unshallow'
+
+dependencies:
+  cache_directories:
+    - node_modules
+  override:
+    - npm prune && npm install
+
+test:
+  override:
+    - npm run lint
+    - npm test
