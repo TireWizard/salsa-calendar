@@ -23,9 +23,8 @@ export default class Day extends PureView {
     return (
       <li
         className={this.getClasses(day)}
-        onClick={onDaySelected.bind(null, day.get('day'))}
-        >
-        <a>{day.get('day')}</a>
+        onClick={onDaySelected.bind(null, day.get('day'))}>
+        <span>{day.get('day')}</span>
       </li>
     );
   }

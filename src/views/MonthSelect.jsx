@@ -17,8 +17,8 @@ export default class MonthSelect extends PureView {
     return (
       <div className="month-select">
         <span className="title">{date.format('MMMM YYYY')}</span>
-        <a className="prev" onClick={onPrevMonth}>Previous</a>
-        <a className="next" onClick={onNextMonth}>Next</a>
+        <span className="prev" onClick={onPrevMonth}>Previous</span>
+        <span className="next" onClick={onNextMonth}>Next</span>
       </div>
     );
   }
