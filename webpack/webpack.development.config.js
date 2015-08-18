@@ -22,7 +22,7 @@ module.exports = {
     loaders: [{
       test: /\.jsx$|\.js$/,
       loaders: ['react-hot', 'babel?stage=0&optional[]=runtime'],
-      exclude: /node_modules/
+      include: path.join(__dirname, '../src')
     }, {
       test: /\.styl$/,
       loader: 'style!css!postcss!stylus'

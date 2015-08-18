@@ -30,7 +30,7 @@ module.exports = {
     loaders: [{
       test: /\.jsx$|\.js$/,
       loaders: ['babel?stage=0&optional[]=runtime'],
-      exclude: /node_modules/
+      include: path.join(__dirname, '../src')
     }, {
       test: /\.styl$/,
       loader: ExtractTextPlugin.extract('style-loader', 'css?minimize!postcss!stylus')
