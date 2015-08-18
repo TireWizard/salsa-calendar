@@ -2,13 +2,6 @@
   salsa-calendar
   ============================== */
 
-$colorGrey       = #ddd
-$colorGreyDarker = #888
-$colorCompleted  = #83c147
-$colorIncomplete = #dea837
-$colorMissing    = #f56743
-$colorScheduled  = #4778d1
-
 @import 'mixins'
 
 .salsa-calendar
@@ -21,7 +14,7 @@ $colorScheduled  = #4778d1
     display flex
     box-sizing border-box
     height 40px
-    border-bottom 1px solid $colorGrey
+    border-bottom 1px solid #ddd
 
     .title
     .prev
@@ -51,13 +44,13 @@ $colorScheduled  = #4778d1
       transform rotate(180deg)
 
     .next
-      order 2
+      order 3
 
   // Calendar view
 
   .month-view
     padding 10px 15px
-    border-bottom 1px solid $colorGrey
+    border-bottom 1px solid #ddd
 
     ol
       display flex
@@ -71,7 +64,6 @@ $colorScheduled  = #4778d1
         padding 1px
         transition margin-left .2s ease-in-out
 
-        a
         span
           display block
           height 100%
@@ -86,33 +78,34 @@ $colorScheduled  = #4778d1
       font-weight bold
 
     .month
-      color $colorGreyDarker
+      color inherit
 
       // States
 
-      .completed a
-        color $colorCompleted
+      .completed span
+        color inherit
+        background-color inherit
 
-      .incomplete a
-        color #fff
-        background-color $colorIncomplete
+      .incomplete span
+        color inherit
+        background-color inherit
 
-      .missing a
-        color #fff
-        background-color $colorMissing
+      .missing span
+        color inherit
+        background-color inherit
 
-      .scheduled a
-        color #fff
-        background-color $colorScheduled
+      .scheduled span
+        color inherit
+        background-color inherit
 
     // Weekday ordering
 
     &[data-week-starts='monday']
-      .monday
+      .mo
         order -1
 
     &[data-week-starts='sunday']
-      .sunday
+      .su
         order -1
 
     // Month ordering
@@ -161,56 +154,5 @@ $colorScheduled  = #4778d1
     &[data-first-day='saturday'] .month li:nth-child(7n + 2)
     &[data-first-day='sunday'] .month li:nth-child(7n)
     &[data-first-day='sunday'] .month li:nth-child(7n + 1)
-      color $colorGrey
-
-  // Legend
-
-  .legend
-    padding 10px 25px
-
-    ul
-      unstyled-list()
-
-      li
-        position relative
-        padding-left 15px
-        line-height 20px
-
-        &:before
-          pseudo()
-          position absolute
-          left 0
-          top 50%
-          width 5px
-          height 5px
-          transform translateY(-50%)
-          circle()
-
-        &.completed:before
-          background-color $colorCompleted
-
-        &.incomplete:before
-          background-color $colorIncomplete
-
-        &.missing:before
-          background-color $colorMissing
-
-        &.scheduled:before
-          background-color $colorScheduled
-
-        .notification
-          display block
-          width 16px
-          height @width
-          line-height @height
-          position absolute
-          right 0
-          top 50%
-          margin-top (@height/-2)
-          color #fff
-          background-color $colorGreyDarker
-          border-radius 3px
-          text-align center
-          text-decoration none
-          font-size x-small
-          font-weight bold
+      color inherit
+      background-color inherit

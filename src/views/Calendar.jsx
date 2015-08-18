@@ -59,7 +59,7 @@ export default class Calendar extends Component {
     const { appState } = this.state;
 
     return (
-      <div className="salsa-calendar">
+      <section className="salsa-calendar">
         <MonthSelect
           date={appState.get('currentMonth')}
           onNextMonth={::this.onNextMonth}
@@ -71,7 +71,7 @@ export default class Calendar extends Component {
           startOfWeek={appState.get('startOfWeek')}
           firstDay={appState.get('firstDay')}
           onDaySelected={::this.onDaySelected} />
-      </div>
+      </section>
     );
   }
 }
