@@ -1,0 +1,76 @@
+/*
+  salsa-calendar | ie8-10
+  ============================== */
+
+.salsa-calendar
+
+  .month-select
+    display block
+    position relative
+
+    .title
+    .prev
+    .next
+      position absolute
+      top 0
+
+    .title
+      left 40px
+      right 40px
+
+    .prev
+      left 0
+
+    .next
+      right 0
+
+  .month-view
+    clearfix()
+
+    ol
+      display block
+
+      li
+        float left
+        width 14.285714286%
+
+    &[data-week-starts='sunday']
+
+      ol
+        position relative
+
+        .mo
+          margin-left 14.285714286%
+
+        .su
+          position absolute
+          left 0
+          top 0
+
+    &[data-first-day='monday'] .month li:first-child
+    &[data-week-starts='sunday'][data-first-day='sunday'] .month li:first-child
+      margin-left 0
+
+    &[data-first-day='tuesday'] .month li:first-child
+    &[data-week-starts='sunday'][data-first-day='monday'] .month li:first-child
+      margin-left 14.285714286%
+
+    &[data-first-day='wednesday'] .month li:first-child
+    &[data-week-starts='sunday'][data-first-day='tuesday'] .month li:first-child
+      margin-left 28.571428572%
+
+    &[data-first-day='thursday'] .month li:first-child
+    &[data-week-starts='sunday'][data-first-day='wednesday'] .month li:first-child
+      margin-left 42.857142858%
+
+    &[data-first-day='friday'] .month li:first-child
+    &[data-week-starts='sunday'][data-first-day='thursday'] .month li:first-child
+      margin-left 57.142857144%
+
+    &[data-first-day='saturday'] .month li:first-child
+    &[data-week-starts='sunday'][data-first-day='friday'] .month li:first-child
+      margin-left 71.42857143%
+
+    &[data-first-day='sunday'] .month li:first-child
+    &[data-week-starts='sunday'][data-first-day='saturday'] .month li:first-child
+      margin-left 85.714285716%

@@ -26,6 +26,7 @@
       display block
       width @height
       height 100%
+      background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAG1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACUUeIgAAAACHRSTlMAUGBwj5CfoA0yfyMAAAApSURBVHgBYwACRg4WBhTAzMHBhirCTksRJgwBND47NfnMyHyI91kRHADgFwGoVUVT9wAAAABJRU5ErkJggg==')
       background-repeat no-repeat
       background-position 50% 50%
       background-size auto 12px
@@ -62,7 +63,6 @@
         width calc(100%/7)
         height 28px
         padding 1px
-        transition margin-left .2s ease-in-out
 
         span
           display block
@@ -72,13 +72,15 @@
           text-decoration none
           border-radius 3px
           color inherit
-          transition all .2s ease-in-out
 
     .heading
       font-weight bold
 
     .month
       color inherit
+
+      span
+        cursor pointer
 
       // States
 
