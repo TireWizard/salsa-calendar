@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer-core');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var pkg = require('../package.json');
 
 module.exports = {
@@ -22,16 +23,16 @@ module.exports = {
       test: /\.jsx$|\.js$/,
       loaders: ['babel?stage=0&optional[]=runtime'],
       include: path.join(__dirname, '../src')
-    },{
+    }, {
       test: /\.styl$/,
-      loader: 'style!css!postcss!stylus'
-    },{
-      test: /\.svg$/,
-      loader: 'svg-loader'
+      loader: ExtractTextPlugin.extract('style-loader', 'css?minimize!postcss!stylus')
     }]
   },
   postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
   resolve: {
     extensions: ['', '.js', '.jsx']
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin(pkg.name + '.min.css')
+  ]
 };
