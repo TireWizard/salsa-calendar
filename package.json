@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/karma start --single-run",
     "lint": "./node_modules/.bin/eslint src/client",
-    "postinstall": "webpack --config=webpack/webpack.prod.config.js"
+    "postinstall": "./node_modules/.bin/webpack --config=webpack/webpack.prod.config.js"
   },
   "repository": {
     "type": "git",
