@@ -12,17 +12,18 @@ export default class DaysWrapper extends PureView {
     days: PropTypes.instanceOf(List),
     startOfWeek: PropTypes.string,
     firstDay: PropTypes.string,
-    onDaySelected: PropTypes.func
+    onDaySelected: PropTypes.func,
+    classDecorator: PropTypes.func
   }
 
   render() {
-    const { daysInWeek, days, startOfWeek, firstDay, onDaySelected } = this.props;
+    const { daysInWeek, days, startOfWeek, firstDay, onDaySelected, classDecorator } = this.props;
 
     return (
       <div className="month-view" data-week-starts={startOfWeek} data-first-day={firstDay}>
         <DaysHeader daysInWeek={daysInWeek} />
         <ol className="month">
-          {days.map(day => <Day key={day} day={day} onDaySelected={onDaySelected} />)}
+          {days.map(day => <Day key={day} day={day} onDaySelected={onDaySelected} classDecorator={classDecorator} />)}
         </ol>
       </div>
     );

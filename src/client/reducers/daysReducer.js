@@ -2,7 +2,8 @@ import { Range, List, Record } from 'immutable';
 
 export const DayRecord = new Record({
   active: false,
-  day: null
+  day: null,
+  date: null
 });
 
 export const updateFirstDay = appState => {
@@ -18,16 +19,17 @@ export const updateDays = appState => {
   const startOfMonth = appState.get('currentMonth').clone().startOf('month');
   const endOfMonth = startOfMonth.clone().add(1, 'month');
   const daysInMonth = endOfMonth.diff(startOfMonth, 'days');
-  const month = startOfMonth.month();
-  const year = startOfMonth.year();
 
   const days = new Range(1, daysInMonth + 1)
-    .map(day => new DayRecord({
-      active: day === appState.get('date').date() &&
-              month === appState.get('date').month() &&
-              year === appState.get('date').year(),
-      day: day
-    }))
+    .map(day => {
+      const dateForDay = startOfMonth.clone().add(day - 1, 'days');
+
+      return new DayRecord({
+        active: dateForDay.isSame(appState.get('date')),
+        date: dateForDay,
+        day: day
+      });
+    })
     .toList();
 
   return appState.set('days', days);

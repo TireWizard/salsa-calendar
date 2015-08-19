@@ -16,11 +16,13 @@ export default class Calendar extends Component {
       PropTypes.instanceOf(Date),
       MomentPropType.momentObj
     ]),
-    onDateChanged: PropTypes.func
+    onDateChanged: PropTypes.func,
+    classDecorator: PropTypes.func
   }
 
   static defaultProps = {
-    onDateChanged: () => {}
+    onDateChanged: () => {},
+    classDecorator: () => { return {}; }
   }
 
   constructor(props) {
@@ -84,7 +86,8 @@ export default class Calendar extends Component {
           daysInWeek={appState.get('daysInWeek')}
           startOfWeek={appState.get('startOfWeek')}
           firstDay={appState.get('firstDay')}
-          onDaySelected={::this.onDaySelected} />
+          onDaySelected={::this.onDaySelected}
+          classDecorator={this.props.classDecorator} />
       </section>
     );
   }

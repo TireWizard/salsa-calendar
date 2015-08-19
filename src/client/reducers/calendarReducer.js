@@ -7,9 +7,9 @@ const updateCurrentMonth = appState => appState.set('currentMonth', appState.get
 export const dateChanged = (appState, date) => {
   return appState.withMutations(mutableAppState => {
     if (date) {
-      mutableAppState.set('date', moment(date));
+      mutableAppState.set('date', moment(date).startOf('day'));
     } else {
-      mutableAppState.set('date', moment());
+      mutableAppState.set('date', moment().startOf('day'));
     }
 
     mutableAppState.set('initialized', true);

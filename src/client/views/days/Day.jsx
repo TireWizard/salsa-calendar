@@ -8,21 +8,25 @@ export default class Day extends PureView {
 
   static propTypes = {
     day: PropTypes.instanceOf(DayRecord),
-    onDaySelected: PropTypes.func
+    onDaySelected: PropTypes.func,
+    classDecorator: PropTypes.func
   }
 
-  getClasses(day) {
+  getClasses(day, classDecorator) {
+    const decoratedClasses = classDecorator(day.get('date'));
+
     return cx({
-      active: day.get('active')
+      active: day.get('active'),
+      ...decoratedClasses
     });
   }
 
   render() {
-    const { day, onDaySelected } = this.props;
+    const { day, onDaySelected, classDecorator } = this.props;
 
     return (
       <li
-        className={this.getClasses(day)}
+        className={this.getClasses(day, classDecorator)}
         onClick={onDaySelected.bind(null, day.get('day'))}>
         <span>{day.get('day')}</span>
       </li>
