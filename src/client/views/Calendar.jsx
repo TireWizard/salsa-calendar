@@ -15,7 +15,12 @@ export default class Calendar extends Component {
     date: PropTypes.oneOfType([
       PropTypes.instanceOf(Date),
       MomentPropType.momentObj
-    ])
+    ]),
+    onDateChanged: PropTypes.func
+  }
+
+  static defaultProps = {
+    onDateChanged: () => {}
   }
 
   constructor(props) {
@@ -40,6 +45,15 @@ export default class Calendar extends Component {
   componentWillUpdate(nextProps) {
     if (nextProps.date !== this.props.date) {
       this.state.dispatcher.dispatch(dateChanged(nextProps.date));
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const appState = this.state.appState;
+    const prevAppState = prevState.appState;
+
+    if (!appState.get('date').isSame(prevAppState.get('date')) && prevAppState.get('initialized')) {
+      this.props.onDateChanged(appState.get('date').clone().startOf('day'));
     }
   }
 

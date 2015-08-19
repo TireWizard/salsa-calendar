@@ -12,6 +12,7 @@ export const dateChanged = (appState, date) => {
       mutableAppState.set('date', moment());
     }
 
+    mutableAppState.set('initialized', true);
     mutableAppState.set('startOfWeek', 'monday');
     mutableAppState.update(updateCurrentMonth);
     mutableAppState.update(updateFirstDay);
@@ -38,7 +39,7 @@ export const prevMonthSelected = appState => {
 
 export const daySelected = (appState, day) => {
   return appState.withMutations(mutableAppState => {
-    mutableAppState.update('date', date => date.clone().date(day));
+    mutableAppState.set('date', mutableAppState.get('currentMonth').clone().date(day));
     mutableAppState.update(updateDays);
   });
 };
