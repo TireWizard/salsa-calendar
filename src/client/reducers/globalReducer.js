@@ -1,16 +1,16 @@
 import { dateChanged, nextMonthSelected, prevMonthSelected, daySelected } from './calendarReducer';
 
-export default (appState, action) => {
+export default (reduction, action) => {
   switch (action.type) {
     case 'DATE_CHANGED':
-      return dateChanged(appState, action.payload);
+      return dateChanged(reduction, action.payload);
     case 'NEXT_MONTH_SELECTED':
-      return nextMonthSelected(appState);
+      return nextMonthSelected(reduction);
     case 'PREV_MONTH_SELECTED':
-      return prevMonthSelected(appState);
+      return prevMonthSelected(reduction);
     case 'DAY_SELECTED':
-      return daySelected(appState, action.payload);
+      return daySelected(reduction, action.payload);
     default:
-      return appState;
+      return reduction;
   }
 };

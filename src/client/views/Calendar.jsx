@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import MomentPropType from 'react-moment-proptypes';
 import { Dispatcher } from 'flux';
 
-import initialAppState from '../initialAppState';
+import initialReduction from '../initialReduction';
 import { dateChanged, nextMonth, prevMonth, daySelected } from '../actions/calendarActions';
 
 import globalReducer from '../reducers/globalReducer';
@@ -30,13 +30,24 @@ export default class Calendar extends Component {
 
     const dispatcher = new Dispatcher();
     dispatcher.register(action => {
-      const appState = globalReducer(this.state.appState, action);
-      this.setState({appState});
+      const reduction = globalReducer(this.state.reduction, action);
+
+      reduction.get('effects').forEach(effect => {
+        switch (effect.type) {
+        case 'CHANGE_DATE':
+          this.props.onDateChanged(effect.payload);
+          break;
+        default:
+          break;
+        }
+      });
+
+      this.setState({reduction});
     });
 
     this.state = {
       dispatcher: dispatcher,
-      appState: initialAppState
+      reduction: initialReduction
     };
   }
 
@@ -44,19 +55,8 @@ export default class Calendar extends Component {
     this.state.dispatcher.dispatch(dateChanged(this.props.date));
   }
 
-  componentWillUpdate(nextProps) {
-    if (nextProps.date !== this.props.date) {
-      this.state.dispatcher.dispatch(dateChanged(nextProps.date));
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const appState = this.state.appState;
-    const prevAppState = prevState.appState;
-
-    if (!appState.get('date').isSame(prevAppState.get('date')) && prevAppState.get('initialized')) {
-      this.props.onDateChanged(appState.get('date').clone().startOf('day'));
-    }
+  componentWillReceiveProps(nextProps) {
+    this.state.dispatcher.dispatch(dateChanged(nextProps.date));
   }
 
   onNextMonth() {
@@ -72,7 +72,8 @@ export default class Calendar extends Component {
   }
 
   render() {
-    const { appState } = this.state;
+    const { reduction } = this.state;
+    const appState = reduction.get('appState');
 
     return (
       <section className="salsa-calendar">
