@@ -2,7 +2,7 @@ module.exports = function(config) {
   config.set({
     frameworks: ['mocha'],
     browsers: ['Chrome'],
-    reporters: ['nyan', 'junit'],
+    reporters: ['nyan'],
     files: [
       'src/spec/**/*.spec.*'
     ],
@@ -21,8 +21,7 @@ module.exports = function(config) {
       require('karma-webpack'),
       require('karma-mocha'),
       require('karma-chrome-launcher'),
-      require('karma-nyan-reporter'),
-      require('karma-junit-reporter')
+      require('karma-nyan-reporter')
     ]
   });
 };
