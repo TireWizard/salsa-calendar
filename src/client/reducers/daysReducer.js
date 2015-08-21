@@ -35,9 +35,9 @@ export const updateDays = appState => {
   return appState.set('days', days);
 };
 
-export const updateHeaderDays = reduction => {
-  if (reduction.getIn(['appState', 'startOfWeek']) === 'monday') {
-    return reduction.setIn(['appState', 'daysInWeek'], List.of('Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'));
+export const updateHeaderDays = appState => {
+  if (appState.get('startOfWeek') === 'monday') {
+    return appState.set('daysInWeek', List.of('Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'));
   }
-  return reduction.setIn(['appState', 'daysInWeek'], List.of('Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'));
+  return appState.set('daysInWeek', List.of('Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'));
 };
