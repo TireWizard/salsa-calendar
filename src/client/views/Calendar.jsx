@@ -74,6 +74,8 @@ export default class Calendar extends Component {
   render() {
     const { reduction } = this.state;
     const appState = reduction.get('appState');
+    
+    console.log('STUFF HERE - Calendar');
 
     return (
       <section className="salsa-calendar">
