@@ -18,6 +18,15 @@ export default class DaysWrapper extends PureView {
 
   render() {
     const { daysInWeek, days, startOfWeek, firstDay, onDaySelected, classDecorator } = this.props;
+    
+    console.log(
+        'daysInWeek '+daysInWeek+"\n"+
+        'days '+days+"\n"+
+        'startOfWeek '+startOfWeek+"\n"+
+        'firstDay '+firstDay+"\n"+
+        'onDaySelected '+onDaySelected+"\n"+
+        'classDecorator '+classDecorator
+      );
 
     return (
       <div className="month-view" data-week-starts={startOfWeek} data-first-day={firstDay}>
