@@ -79,6 +79,7 @@ export default class Calendar extends Component {
 
     return (
       <section className="salsa-calendar">
+        <input id="thisIsActuallyWorking" type="hidden" />
         <MonthSelect
           date={appState.get('currentMonth')}
           onNextMonth={::this.onNextMonth}
