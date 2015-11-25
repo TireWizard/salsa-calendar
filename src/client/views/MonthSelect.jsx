@@ -22,8 +22,6 @@ export default class MonthSelect extends PureView {
       previous = "précédent";
       next = "suivant";
     }
-    
-    dateFormatted = date.format('MMMM YYYY');
 
     return (
       <div className="month-select">
