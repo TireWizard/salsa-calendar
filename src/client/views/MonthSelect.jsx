@@ -13,21 +13,12 @@ export default class MonthSelect extends PureView {
 
   render() {
     const { date, onNextMonth, onPrevMonth } = this.props;
-    
-    var dateFormatted = date.format('YYYY MMMM');
-    var previous = "Previous";
-    var next = "Next";
-    if (this.props.locale == "fr") {
-      dateFormatted = date.format('MMMM YYYY');
-      previous = "précédent";
-      next = "suivant";
-    }
 
     return (
       <div className="month-select">
-        <span className="title">{dateFormatted}</span>
-        <span className="prev" onClick={onPrevMonth}>{previous}</span>
-        <span className="next" onClick={onNextMonth}>{next}</span>
+        <span className="title">{date.format('YYYY MMMM')}</span>
+        <span className="prev" onClick={onPrevMonth}>Previous</span>
+        <span className="next" onClick={onNextMonth}>Next</span>
       </div>
     );
   }
