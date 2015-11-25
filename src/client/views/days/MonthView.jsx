@@ -18,6 +18,14 @@ export default class DaysWrapper extends PureView {
 
   render() {
     const { daysInWeek, days, startOfWeek, firstDay, onDaySelected, classDecorator } = this.props;
+    
+    if (this.props.locale == "fr") {
+      if (daysInWeek == List.of('Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa')) {
+        daysInWeek = List.of('Vi', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa');
+      } else if (daysInWeek == List.of('Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su')) {
+        daysInWeek = List.of('Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa', 'Di');
+      }
+    }
 
     return (
       <div className="month-view" data-week-starts={startOfWeek} data-first-day={firstDay}>
