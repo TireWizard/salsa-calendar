@@ -21,7 +21,7 @@ export default class DaysWrapper extends PureView {
 
     return (
       <div className="month-view" data-week-starts={startOfWeek} data-first-day={firstDay}>
-        <DaysHeader daysInWeek={daysInWeekWithLocale} />
+        <DaysHeader daysInWeek={daysInWeek} />
         <ol className="month">
           {days.map(day => <Day key={day} day={day} onDaySelected={onDaySelected} classDecorator={classDecorator} />)}
         </ol>
