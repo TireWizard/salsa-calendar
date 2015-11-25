@@ -80,8 +80,7 @@ export default class Calendar extends Component {
         <MonthSelect
           date={appState.get('currentMonth')}
           onNextMonth={::this.onNextMonth}
-          onPrevMonth={::this.onPrevMonth}
-          locale={this.props.locale} />
+          onPrevMonth={::this.onPrevMonth} />
 
         <MonthView
           days={appState.get('days')}
@@ -89,8 +88,7 @@ export default class Calendar extends Component {
           startOfWeek={appState.get('startOfWeek')}
           firstDay={appState.get('firstDay')}
           onDaySelected={::this.onDaySelected}
-          classDecorator={this.props.classDecorator}
-          locale={this.props.locale} />
+          classDecorator={this.props.classDecorator} />
       </section>
     );
   }
