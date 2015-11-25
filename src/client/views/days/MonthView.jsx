@@ -22,7 +22,7 @@ export default class DaysWrapper extends PureView {
     if (this.props.locale == "fr") {
       if (daysInWeek == List.of('Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa')) {
         daysInWeek = List.of('Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa');
-      } else if (daysInWeek == List.of('Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su')) {
+      } else {
         daysInWeek = List.of('Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa', 'Di');
       }
     }
