@@ -75,7 +75,7 @@ export default class Calendar extends Component {
     const { reduction } = this.state;
     const appState = reduction.get('appState');
     
-    console.log('Loading - Calendar');
+    console.log('Loading - Calendar, locale: '+this.props.locale);
 
     return (
       <section className="salsa-calendar">
